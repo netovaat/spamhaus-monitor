@@ -1,0 +1,39 @@
+# Configuração do Spamhaus Monitor
+telegram:
+  bot_token: "SEU_BOT_TOKEN_AQUI"
+  chat_id: "SEU_CHAT_ID_AQUI"
+
+# Lista de IPs e blocos para monitorar
+ips_to_monitor:
+  - "8.8.8.8"
+  - "1.1.1.1"
+  - "192.168.1.0/24"
+  - "10.0.0.0/8"
+
+# Configurações de monitoramento
+monitoring:
+  interval_minutes: 60  # Intervalo entre verificações em minutos
+  timeout_seconds: 10   # Timeout para consultas DNS
+  max_retries: 3        # Número máximo de tentativas
+
+# Configurações de logging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: "spamhaus_monitor.log"
+  max_size_mb: 10
+  backup_count: 5
+
+# Listas do Spamhaus para verificar
+spamhaus_lists:
+  - name: "SBL"
+    zone: "sbl.spamhaus.org"
+    description: "Spamhaus Block List"
+  - name: "XBL"
+    zone: "xbl.spamhaus.org"
+    description: "Exploits Block List"
+  - name: "PBL"
+    zone: "pbl.spamhaus.org"
+    description: "Policy Block List"
+  - name: "CSS"
+    zone: "css.spamhaus.org"
+    description: "Composite Screening Service"

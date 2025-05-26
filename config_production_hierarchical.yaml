@@ -1,0 +1,42 @@
+# Configuração de produção com pesquisa hierárquica CIDR
+# Exemplo prático para monitoramento real
+
+telegram:
+  bot_token: "YOUR_BOT_TOKEN"  # Substitua pelo seu token
+  chat_id: "YOUR_CHAT_ID"      # Substitua pelo seu chat ID
+
+# IPs e blocos para monitoramento hierárquico
+ips_to_monitor:
+  # Exemplos de blocos reais - SUBSTITUA pelos seus IPs/blocos
+  - "203.0.113.0/24"     # Bloco /24 - será verificado hierarquicamente
+  - "198.51.100.0/25"    # Bloco /25 - verificação de sub-blocos e IPs
+  - "192.0.2.100"        # IP individual
+  - "192.0.2.101"        # Outro IP individual
+
+# Configurações otimizadas para produção
+monitoring:
+  interval_minutes: 60        # Verificar a cada hora (ajuste conforme necessário)
+  timeout_seconds: 30         # Timeout maior para blocos grandes
+  max_retries: 3              # Tentativas para verificações
+
+# Logging otimizado
+logging:
+  level: "INFO"               # INFO para produção, DEBUG para troubleshooting
+  file: "/opt/spamhaus-monitor/logs/production.log"
+  max_size_mb: 50             # Logs maiores para produção
+  backup_count: 10            # Manter histórico
+
+# Blacklists Spamhaus padrão
+spamhaus_lists:
+  - name: "SBL"
+    zone: "sbl.spamhaus.org"
+    description: "Spamhaus Block List"
+  - name: "XBL"
+    zone: "xbl.spamhaus.org"
+    description: "Exploits Block List"
+  - name: "PBL"
+    zone: "pbl.spamhaus.org"
+    description: "Policy Block List"
+  - name: "CSS"
+    zone: "css.spamhaus.org"
+    description: "Compromised Systems List"

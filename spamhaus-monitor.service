@@ -1,0 +1,14 @@
+[Unit]
+Description=Spamhaus Monitor Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/spamhaus-monitor
+ExecStart=/usr/bin/python3 /opt/spamhaus-monitor/spamhaus_monitor.py
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

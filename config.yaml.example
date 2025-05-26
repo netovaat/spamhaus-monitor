@@ -1,0 +1,46 @@
+# Configuração de exemplo - NÃO use em produção
+telegram:
+  bot_token: "1234567890:AAbbCCddEEffGGhhIIjjKKllMMnnOOppQQ-EXEMPLO"
+  chat_id: "123456789"
+
+# Exemplos de IPs e blocos para monitorar
+ips_to_monitor:
+  # IPs públicos conhecidos (para teste)
+  - "8.8.8.8"           # Google DNS
+  - "1.1.1.1"           # Cloudflare DNS
+  - "208.67.222.222"    # OpenDNS
+  
+  # Blocos de rede (cuidado com blocos muito grandes)
+  - "192.168.1.0/24"    # Rede local exemplo
+  - "10.0.0.0/16"       # Rede privada exemplo
+  
+  # IPs suspeitos ou problemáticos (substitua pelos seus)
+  # - "X.X.X.X"         # Substitua por IPs reais
+
+# Configurações de monitoramento
+monitoring:
+  interval_minutes: 60  # Verificar a cada hora
+  timeout_seconds: 10   # Timeout de 10 segundos
+  max_retries: 3        # 3 tentativas máximas
+
+# Configurações de logging
+logging:
+  level: "INFO"         # INFO para produção, DEBUG para desenvolvimento
+  file: "spamhaus_monitor.log"
+  max_size_mb: 10
+  backup_count: 5
+
+# Listas padrão do Spamhaus (não altere a menos que necessário)
+spamhaus_lists:
+  - name: "SBL"
+    zone: "sbl.spamhaus.org"
+    description: "Spamhaus Block List"
+  - name: "XBL"
+    zone: "xbl.spamhaus.org"
+    description: "Exploits Block List"
+  - name: "PBL"
+    zone: "pbl.spamhaus.org"
+    description: "Policy Block List"
+  - name: "CSS"
+    zone: "css.spamhaus.org"
+    description: "Composite Screening Service"
